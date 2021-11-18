@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { toast } from 'react-toastify';
-import './index.css';
+import {Provider} from 'react-redux';
+import {toast} from 'react-toastify';
 import App from './App';
 import store from './store/index';
 
+import './index.css';
 
 toast.configure({
   autoClose: 3000,
@@ -21,7 +21,7 @@ toast.configure({
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+      <App />
   </Provider>,
   document.getElementById('root')
 );

@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
 import {Link} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import {useFormik} from 'formik';
 import { Checkbox, Button, Input } from '../../components/index';
 import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons';
 
-import * as AuthService from '../../store/reducers/auth';
-
 import * as Yup from 'yup';
+
+import * as AuthService from '../../services/user.services';
 
 
 
@@ -18,18 +17,19 @@ const Login = () => {
     const [isGoogleAuthLoading, setGoogleAuthLoading] = useState(false);
     const [isFacebookAuthLoading, setFacebookAuthLoading] = useState(false);
 
-    const dispatch = useDispatch()
+   
 
 
 
     const login = async (email, password) => {
         try {
-            
             setAuthLoading(true);
-            const token_data_res = await dispatch(AuthService.login({email, password}));
+            const data_user = AuthService.loginByAuth(email, password)
+            //const data_user = await AuthService.loginByAuth(email, password);
             toast.success('¡Inicio de sesión exitoso!');
             setAuthLoading(false);
-         console.log(token_data_res.payload.user.data);
+            
+         //console.log(token_data_res.payload.user.data);
             
         } catch (error) {
             setAuthLoading(false);

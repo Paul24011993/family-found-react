@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const Input = ({
     className,
@@ -27,7 +27,7 @@ const Input = ({
         if (formik && formikFieldProps) {
             formik.setFieldValue(formikFieldProps.name, localValue);
         }
-    }, [formik, formikFieldProps, localValue, onChange, value]);
+    }, [localValue]);
 
     useEffect(() => {
         if (
@@ -45,7 +45,10 @@ const Input = ({
             return;
         }
         setFormStatus(null);
-    }, [formik.errors, formik.touched, formikFieldProps.name]);
+    }, [
+        formik.touched[formikFieldProps.name],
+        formik.errors[formikFieldProps.name]
+    ]);
 
     const onChangeHandler = (event) => {
         event.preventDefault();

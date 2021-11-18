@@ -3,6 +3,22 @@ import { toast } from 'react-toastify';
 import AuthService from "../../services/user.services";
 
 
+/* 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+  const data = {email: 'admin', password: 'admin'};
+  useEffect(() => {
+
+
+    axios.post("Home/login/", data )
+      .then((response) => {
+        console.log(response);
+      });
+  }, [data]);
+
+
+
+ */
+
 export const login = createAsyncThunk(
     "auth/login",
     async ({ email, password }, thunkAPI) => {
